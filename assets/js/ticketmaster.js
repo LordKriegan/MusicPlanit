@@ -1,6 +1,5 @@
 var city = "";
 
-
 window.onload = function() {
     $("#searchBtn").on("click", function(event) {
         event.preventDefault();
