@@ -1,3 +1,34 @@
+#lgList {
+    flex-direction: row;
+    flex-wrap: true;
+
+}
+
+.eventElemLg {
+    display: inline-block;
+    border-style: groove;
+    border-width: 2px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.eventElemLg:hover {
+    box-shadow: -10px 10px 3pt 2pt grey;
+}
+
+.eventElemSm {
+    
+    border-style: groove;
+    border-width: 2px;
+    margin: 10px;
+    padding: 5px;
+}
+
+.eventElemSm:hover {
+background: grey;
+color: white;
+}
+
 #fbLogout {
 	display: none;
 }
