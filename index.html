@@ -9,7 +9,11 @@
     <link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
     <!-- jquery link -->
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <!-- bootstrap jquery -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
     <script type="text/javascript" src="./assets/js/fb.js"></script>
     <script type="text/javascript" src="./assets/js/ticketmaster.js"></script>
 </head>
@@ -37,14 +41,34 @@
                     <li>
                         <fb:login-button id="fbBtn" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
                     </li>
-                    <li id="fbLogout"><a href="#">Logout of Facebook!</a></li>
-                    <li><img class="img-responsive" id="fbProfilePic" src="" /></li>
+                    <li id="fbLogout">
+                        <a href="#">Logout of Facebook!</a>
+                    </li>
+                    <li>
+                        <img class="img-responsive" id="fbProfilePic" src="" />
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
         <!-- /.container-fluid -->
     </nav>
+
+    <div class="modal fade musicPlanitModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content text-center">
+                <div id="eventContent">
+            <img src="http://via.placeholder.com/200x200">
+
+                </div>
+<div class="fb-share-button" data-href="" data-layout="button" data-size="large"
+    data-mobile-iframe="true">
+    <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a>
+</div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <div class="row">
             <div class="col-xs-12 hidden-xs hidden-sm">
@@ -54,7 +78,7 @@
                     </div>
                     <div class="panel-body" id="lgList">
                         <!--populate images here-->
-                        <div class="eventElemLg">
+                        <div class="eventElemLg" data-toggle="modal" data-target=".musicPlanitModal">
                             <p class="text-center">Event Name</p>
                             <img src="http://via.placeholder.com/200x200">
                         </div>
@@ -76,28 +100,28 @@
         </div>
         <div class="row">
             <div class="col-xs-12 hidden-md hidden-lg">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Where do you want to go</h3>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Where do you want to go</h3>
+                    </div>
+                    <div class="panel-body" id="smList">
+                        <!--populate small list here-->
+                        <div class="eventElemSm">
+                            <p class="text-center">Event Name</p>
+                        </div>
+                        <div class="eventElemSm">
+                            <p class="text-center">Event Name</p>
+                        </div>
+                        <div class="eventElemSm">
+                            <p class="text-center">Event Name</p>
+                        </div>
+                        <div class="eventElemSm">
+                            <p class="text-center">Event Name</p>
+                        </div>
+
+
+                    </div>
                 </div>
-                <div class="panel-body" id="smList">
-                    <!--populate small list here-->
-                    <div class="eventElemSm">
-                        <p class="text-center">Event Name</p>
-                    </div>
-                    <div class="eventElemSm">
-                        <p class="text-center">Event Name</p>
-                    </div>
-                    <div class="eventElemSm">
-                        <p class="text-center">Event Name</p>
-                    </div>
-                    <div class="eventElemSm">
-                        <p class="text-center">Event Name</p>
-                    </div>
-                    
-                    
-                </div>
-            </div>
             </div>
         </div>
     </div>
