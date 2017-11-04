@@ -6,12 +6,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
     <!-- Optional theme -->
-    <link rel="stylesheet" href="https://bootswatch.com/cyborg/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/3/cyborg/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
-
     <!-- jquery link -->
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-        crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./assets/js/fb.js"></script>
 </head>
 
 <body>
@@ -33,6 +32,13 @@
                     </div>
                     <button type="submit" class="btn btn-default" id="searchBtn">Submit</button>
                 </form>
+                <ul style="margin-top: 12px" class="nav navbar-nav navbar-right">
+                    <li>
+                        <fb:login-button id="fbBtn" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+                    </li>
+                    <li id="fbLogout"><a href="#">Logout of Facebook!</a></li>
+                    <li><img class="img-responsive" id="fbProfilePic" src="" /></li>
+                </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
