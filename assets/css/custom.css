@@ -1,7 +1,9 @@
 #lgList {
     flex-direction: row;
-    flex-wrap: true;
-
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    display: flex;
 }
 
 .eventElemLg {
@@ -38,3 +40,6 @@ color: white;
 	height: 50px;*/
 	display: none;
 }
+
+
+
