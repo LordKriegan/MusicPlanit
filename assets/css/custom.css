@@ -12,6 +12,22 @@
     border-width: 2px;
     margin: 10px;
     padding: 5px;
+    text-align: center;
+    width: 250px;
+    height: 250px; 
+
+}
+
+.eventElemLg > img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+
+}
+
+.eventElemLg > p {
+    text-align: center;
+    margin: 0 auto;
 }
 
 .eventElemLg:hover {
