@@ -42,7 +42,7 @@ window.onload = function() {
 
 //Create links within image so it can popup to the page
 
-$("#" + response._embedded.events[i].id).on("click", function () {
-	var
-	var click = 
-})
+//$("#" + response._embedded.events[i].id).on("click", function () {
+//	var
+//	var click = 
+//})
