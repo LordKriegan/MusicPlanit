@@ -36,6 +36,6 @@ window.onload = function() {
             })
     });
 }
-
+    
 //Create links within image so it can popup to the page
 
