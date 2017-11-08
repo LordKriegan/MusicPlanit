@@ -29,11 +29,9 @@ window.onload = function() {
                     divContainer.attr("data-toggle", "modal");
                     divContainer.attr("data-target", ".musicPlanitModal");
                     divContainer.attr("data-index", i);
-					$("#lgList").prepend(divContainer);   	                 
-					divContainer.html(
-                        "<img src='" + response._embedded.events[i].images[0].url +
-                        "<p>" + eventName + "</p>"
-                    );
+                    divContainer.append(eventImage);
+                    divContainer.append("<p>" + eventName + "</p>");
+                    $("#lgList").prepend(divContainer);                      
                     
 
                     var divContainerSm = $("<div>");
