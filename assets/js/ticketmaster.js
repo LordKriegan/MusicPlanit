@@ -1,4 +1,4 @@
-var city = "";
+var eventSearch = []; 
 
 window.onload = function() {
     $("#searchBtn").on("click", function(event) {
@@ -13,14 +13,17 @@ window.onload = function() {
             })
             .done(function(response) {
                 console.log(response);
+                eventSearch = response;
                 for (i = 0; i < response._embedded.events.length; i++) {
                     var eventImage = $("<img>");
                     eventImage.attr("src", response._embedded.events[i].images[1].url);
                     console.log(eventImage);
-
                     var divContainer = $("<div>");
                     divContainer.attr("id", response._embedded.events[i].id);
                     divContainer.attr("class", "eventElemLg");
+                    divContainer.attr("data-toggle", "modal");
+                    divContainer.attr("data-target", ".musicPlanitModal");
+                    divContainer.attr("data-index", i);
                     $("#lgList").prepend(divContainer);
                     $("#" + response._embedded.events[i].id).html(
                         "<img src='" + response._embedded.events[i].images[0].url + "' style='width: 200px;'/>" +
@@ -39,3 +42,7 @@ window.onload = function() {
 
 //Create links within image so it can popup to the page
 
+$("#" + response._embedded.events[i].id).on("click", function () {
+	var
+	var click = 
+})
