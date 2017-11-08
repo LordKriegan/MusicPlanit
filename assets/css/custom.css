@@ -1,3 +1,11 @@
+html { 
+  background: url(../images/background.jpg) no-repeat center center fixed; 
+  background-size: cover;
+}
+body {
+	background: rgba(0, 0, 0 , 0);
+}
+
 #lgList {
     flex-direction: row;
     flex-wrap: wrap;
@@ -31,7 +39,7 @@
 }
 
 .eventElemLg:hover {
-    box-shadow: -10px 10px 3pt 2pt grey;
+    box-shadow: -10px 10px 3pt 2pt rgb(87, 162, 248);
 }
 
 .eventElemSm {
