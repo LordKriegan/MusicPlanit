@@ -16,6 +16,10 @@ window.onload = function() {
                 console.log(response);
                 eventSearch = response;
                 for (i = 0; i < response._embedded.events.length; i++) {
+                    var eventName = response._embedded.events[i].name;
+                    if (eventName.length > 30) {
+                        eventName = eventName.slice(0, 30) + "...";
+                    }
                     var eventImage = $("<img>");
                     eventImage.attr("src", response._embedded.events[i].images[1].url);
                     console.log(eventImage);
@@ -25,11 +29,9 @@ window.onload = function() {
                     divContainer.attr("data-toggle", "modal");
                     divContainer.attr("data-target", ".musicPlanitModal");
                     divContainer.attr("data-index", i);
-					$("#lgList").prepend(divContainer);   	                 
-					divContainer.html(
-                        "<img src='" + response._embedded.events[i].images[0].url + "' style='width: 200px;'/>" +
-                        "<p>" + response._embedded.events[i].name + "</p>"
-                    );
+                    divContainer.append(eventImage);
+                    divContainer.append("<p>" + eventName + "</p>");
+                    $("#lgList").prepend(divContainer);                      
                     
 
                     var divContainerSm = $("<div>");
@@ -37,7 +39,7 @@ window.onload = function() {
                     divContainerSm.attr("data-toggle", "modal");
                     divContainerSm.attr("data-target", ".musicPlanitModal");
                     divContainerSm.attr("data-index", i);
-					divContainerSm.html("<p>" + response._embedded.events[i].name + "</p>");                    
+					divContainerSm.html("<p>" + eventName + "</p>");                    
                     $("#smList").prepend(divContainerSm);
 
                     

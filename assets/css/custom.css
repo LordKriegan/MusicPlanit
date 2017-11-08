@@ -43,7 +43,7 @@ body {
 }
 
 .eventElemSm {
-    
+    text-align: center;
     border-style: groove;
     border-width: 2px;
     margin: 10px;
