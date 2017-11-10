@@ -14,6 +14,8 @@
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
     <script type="text/javascript" src="./assets/js/fb.js"></script>
     <script type="text/javascript" src="./assets/js/ticketmaster.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsqsGRoeCFaylDOCU1XPjy7liKohqa_Qg&libraries=places" async defer></script>
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon" />
 </head>
 
 <body>
@@ -54,7 +56,24 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-center">
                 <div id="eventContent">
-                    <img src="http://via.placeholder.com/200x200">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button class="btn btn-default" id="foodPlaces">Neary Restauraunts</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button class="btn btn-default" id="lodgingPlaces">Nearby Lodging</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p id="eventInfo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugiat similique in id beatae odit ducimus sed assumenda facere. Nobis libero dolor eos nisi consectetur facilis fugiat rem commodi, maxime.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="fb-share-button" data-href="" data-layout="button" data-size="large" data-mobile-iframe="true">
                     <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a>
@@ -65,14 +84,14 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 hidden-xs hidden-sm">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary bgFix">
                     <div class="panel-heading">
                         <h3 class="panel-title">Where do you want to go</h3>
                     </div>
                     <div class="panel-body" id="lgList">
                         <!--populate images here-->
-                        <div class="eventElemLg" data-toggle="modal" data-target=".musicPlanitModal">
-                            <p class="text-center">Event Name</p>
+                        <!-- <div class="eventElemLg" data-toggle="modal" data-target=".musicPlanitModal"> -->
+                            <!-- <p class="text-center">Event Name</p>
                             <img src="http://via.placeholder.com/200x200">
                         </div>
                         <div class="eventElemLg">
@@ -86,20 +105,20 @@
                         <div class="eventElemLg">
                             <p class="text-center">Event Name</p>
                             <img src="http://via.placeholder.com/200x200">
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-xs-12 hidden-md hidden-lg">
-                <div class="panel panel-primary">
+                <div class="panel panel-primary bgFix">
                     <div class="panel-heading">
                         <h3 class="panel-title">Where do you want to go</h3>
                     </div>
                     <div class="panel-body" id="smList">
                         <!--populate small list here-->
-                        <div class="eventElemSm">
+                        <!-- <div class="eventElemSm">
                             <p class="text-center">Event Name</p>
                         </div>
                         <div class="eventElemSm">
@@ -110,12 +129,14 @@
                         </div>
                         <div class="eventElemSm">
                             <p class="text-center">Event Name</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>
