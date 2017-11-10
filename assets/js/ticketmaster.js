@@ -48,7 +48,9 @@ window.onload = function() {
 					divContainerSm.html("<p>" + eventName + "</p>" + "<p>" + date + " " + time + "</p>");                    
                     $("#smList").prepend(divContainerSm);
 
-                    
+                    //response._embedded.events[0]._embedded.venues[i].country.countryCode
+                    //response._embedded.events[0]._embedded.venues[i].state.stateCode;
+                    //response._embedded.events[0]._embedded.venues[i].name;
                 }
                 console.log(response._embedded.events[0]._embedded.venues[0].city.name);
                 console.log(queryURL);
