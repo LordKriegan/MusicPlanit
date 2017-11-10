@@ -69,7 +69,7 @@ window.onload = function() {
         $("#lgList").empty();
         $("#smList").empty();
         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=BZAkAGm6c4G9IYugsrmGfucSP3F5PcSf&city=" + city;
-
+        
         $.ajax({
                 url: queryURL,
                 method: "GET"
@@ -92,18 +92,28 @@ window.onload = function() {
                     divContainer.attr("data-target", ".musicPlanitModal");
                     divContainer.attr("data-index", i);
                     divContainer.append(eventImage);
-                    divContainer.append("<p>" + eventName + "</p>");
-                    $("#lgList").prepend(divContainer);
 
+                    var date = response._embedded.events[i].dates.start.localDate;
+                    var time = response._embedded.events[i].dates.start.localTime;
+                    date = moment(date).format('MMMM Do YYYY');
+                    time = moment(time, "hhmm").format("hh:mm a");
+
+
+                    divContainer.append("<p>" + eventName + "</p>" + "<p>" + date + " " + time +"</p>");
+                    $("#lgList").prepend(divContainer);                      
 
                     var divContainerSm = $("<div>");
                     divContainerSm.attr("class", "eventElemSm");
                     divContainerSm.attr("data-toggle", "modal");
                     divContainerSm.attr("data-target", ".musicPlanitModal");
                     divContainerSm.attr("data-index", i);
-                    divContainerSm.html("<p>" + eventName + "</p>");
+
+					divContainerSm.html("<p>" + eventName + "</p>" + "<p>" + date + " " + time + "</p>");                    
                     $("#smList").prepend(divContainerSm);
 
+                    //response._embedded.events[0]._embedded.venues[i].country.countryCode
+                    //response._embedded.events[0]._embedded.venues[i].state.stateCode;
+                    //response._embedded.events[0]._embedded.venues[i].name;
 
                 }
                 console.log(response._embedded.events[0]._embedded.venues[0].city.name);
