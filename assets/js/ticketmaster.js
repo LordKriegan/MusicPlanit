@@ -30,7 +30,13 @@ window.onload = function() {
                     divContainer.attr("data-target", ".musicPlanitModal");
                     divContainer.attr("data-index", i);
                     divContainer.append(eventImage);
-                    divContainer.append("<p>" + eventName + "</p>");
+                    var date = response._embedded.events[i].dates.start.localDate;
+                    var time = response._embedded.events[i].dates.start.localTime;
+                    date = moment(date).format('MMMM Do YYYY');
+                    time = moment(time, "hhmm").format("hh:mm a");
+
+
+                    divContainer.append("<p>" + eventName + "</p>" + "<p>" + date + " " + time +"</p>");
                     $("#lgList").prepend(divContainer);                      
                     
 
@@ -39,7 +45,7 @@ window.onload = function() {
                     divContainerSm.attr("data-toggle", "modal");
                     divContainerSm.attr("data-target", ".musicPlanitModal");
                     divContainerSm.attr("data-index", i);
-					divContainerSm.html("<p>" + eventName + "</p>");                    
+					divContainerSm.html("<p>" + eventName + "</p>" + "<p>" + date + " " + time + "</p>");                    
                     $("#smList").prepend(divContainerSm);
 
                     
