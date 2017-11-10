@@ -1,6 +1,12 @@
 var eventSearch = [];
 
 window.onload = function() {
+
+        $(document).on("click", ".eventElemLg", function() {
+            console.log(eventSearch[$(this).attr("data-index")]._embedded.venues[0].location)
+            initMap(parseInt(eventSearch[$(this).attr("data-index")]._embedded.venues[0].location.latitude), parseInt(eventSearch[$(this).attr("data-index")]._embedded.venues[0].location.longitude));
+        });
+
     $("#searchBtn").on("click", function(event) {
         event.preventDefault();
         city = $("#searchString").val().trim();
@@ -14,7 +20,7 @@ window.onload = function() {
             })
             .done(function(response) {
                 console.log(response);
-                eventSearch = response;
+                eventSearch = response._embedded.events;
                 for (i = 0; i < response._embedded.events.length; i++) {
                     var eventName = response._embedded.events[i].name;
                     if (eventName.length > 30) {
