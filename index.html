@@ -31,12 +31,24 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <form class="navbar-form navbar-left">
+                    <span class="dropdown">
+                        <button id="countryListBtn" class="btn btn-primary dropdown-toggle" type="button" data-countryCode="" data-toggle="dropdown">Select a country
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="countryList">
+                        </ul>
+                    </span>
+                    <span class="dropdown">
+                        <button id="stateListBtn" class="disabled btn btn-primary dropdown-toggle" type="button" data-regionCode="" data-toggle="dropdown">Select a state
+                            <span class="caret"></span></button>
+                        <ul class="dropdown-menu" id="stateList">
+                        </ul>
+                    </span>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search" id="searchString">
+                        <input type="text" class="form-control" placeholder="Select a city" id="searchString">
                     </div>
                     <button type="submit" class="btn btn-default" id="searchBtn">Submit</button>
                 </form>
-                <ul style="margin-top: 12px" class="nav navbar-nav navbar-right">
+                <ul style="margin: 12px 0 12px 0;" class="nav navbar-nav navbar-right">
                     <li>
                         <fb:login-button id="fbBtn" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
                     </li>
@@ -57,32 +69,24 @@
             <div class="modal-content">
                 <div id="eventContent" style="padding: 0 20px;">
                     <div class="row">
-                        <div class="col-xs-11"><h2 id="eventInfoTitle">Event Title</h2></div>
-                        <div class="col-xs-1">
+                        <div class="col-xs-12">
+                            <h2 style="color: white;" id="eventInfoTitle">Event Title</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-7">
+                            <div id="map"></div>
+                        </div>
+                        <div class="col-xs-12 col-md-5">
+                            <div id="eventInfo" style="font-size: 125%; padding-top: 50px;">
+
+                            </div>
                             <div class="fb-share-button" data-href="" data-layout="button" data-size="large" data-mobile-iframe="true">
                                 <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a>
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-xs-7">
-                            <div id="map"></div>
-                        </div>
-                        <div class="col-xs-5">
-                            <div id="eventInfo" style="font-size: 125%; padding-top: 50px;">
-                                <p>
-                                    Artist Info<br />
-                                    00pm - Month, 00, 2000<br />
-                                    Venue Name<br />
-                                    13000 W. Musical Lane, CA
-                                </p>
-                            </div>
-                            <button class="btn btn-default" id="foodPlaces">Restauraunts</button>
-                            <button class="btn btn-default" id="lodgingPlaces">Lodging</button>
-                        </div>
-                    </div>
                 </div>
-                
             </div>
         </div>
     </div>
@@ -96,7 +100,7 @@
                     <div class="panel-body" id="lgList">
                         <!--populate images here-->
                         <!-- <div class="eventElemLg" data-toggle="modal" data-target=".musicPlanitModal"> -->
-                            <!-- <p class="text-center">Event Name</p>
+                        <!-- <p class="text-center">Event Name</p>
                             <img src="http://via.placeholder.com/200x200">
                         </div>
                         <div class="eventElemLg">
@@ -140,8 +144,6 @@
             </div>
         </div>
     </div>
-
-
 </body>
 
 </html>
