@@ -69,7 +69,7 @@ window.onload = function() {
         $("#lgList").empty();
         $("#smList").empty();
         var queryURL = "https://app.ticketmaster.com/discovery/v2/events.json?&apikey=BZAkAGm6c4G9IYugsrmGfucSP3F5PcSf&city=" + city;
-
+        
         $.ajax({
                 url: queryURL,
                 method: "GET"
