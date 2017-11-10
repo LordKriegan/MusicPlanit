@@ -31,7 +31,7 @@ function statusChangeCallback(response) {
         $("#fbBtn").css("display", "none");
         $("#fbLogout").css("display", "block");
         $("#fbProfilePic").css("display", "inline");
-        callApi();
+        setUserPic();
     } else {
         $("#fbBtn").css("display", "block");
         $("#fbLogout").css("display", "none");
@@ -39,16 +39,18 @@ function statusChangeCallback(response) {
     }
 }
 
-function callApi() {
-  FB.api("/me?fields=id,name,picture", function(response) {
-    $("#fbProfilePic").attr("src", response.picture.data.url);
-  })
+function setUserPic() {
+    FB.api("/me?fields=id,name,picture", function(response) {
+        $("#fbProfilePic").attr("src", response.picture.data.url);
+    })
 }
+
 function checkLoginState() {
     FB.getLoginStatus(function(response) {
         statusChangeCallback(response);
     });
 }
+
 function initMap(lat, long) {
 
 
@@ -66,21 +68,21 @@ function initMap(lat, long) {
     });
 
     infowindow = new google.maps.InfoWindow();
-        var newPlace = new google.maps.places.PlacesService(map);
-        newPlace.nearbySearch({
-            location: eventLocation,
-            radius: 4000,
-            type: ['restaurant'],
-            openNow: true
-        }, gMapsCallback);
+    var newPlace = new google.maps.places.PlacesService(map);
+    newPlace.nearbySearch({
+        location: eventLocation,
+        radius: 4000,
+        type: ['restaurant'],
+        openNow: true
+    }, gMapsCallback);
 
-        var newPlace = new google.maps.places.PlacesService(map);
-        newPlace.nearbySearch({
-            location: eventLocation,
-            radius: 4000,
-            type: ['lodging'],
-            openNow: true
-        }, gMapsCallback);
+    var newPlace = new google.maps.places.PlacesService(map);
+    newPlace.nearbySearch({
+        location: eventLocation,
+        radius: 4000,
+        type: ['lodging'],
+        openNow: true
+    }, gMapsCallback);
 }
 
 function gMapsCallback(results, status) {
@@ -90,7 +92,7 @@ function gMapsCallback(results, status) {
             if (results[i].types.indexOf("restaurant") > -1) {
                 icon = "./assets/images/food.png";
             }
-            if (results[i].types.indexOf("lodging") > -1){
+            if (results[i].types.indexOf("lodging") > -1) {
                 icon = "./assets/images/lodging.png";
             }
             createMarker(results[i], icon);
@@ -99,7 +101,6 @@ function gMapsCallback(results, status) {
 }
 
 function createMarker(place, icon) {
-    var placeLoc = place.geometry.location;
     var marker = new google.maps.Marker({
         icon: icon,
         map: map,
@@ -138,22 +139,22 @@ $.ajax({
 
 
 function loadModal(eventIndex) {
-        var lat = Number(eventSearch[eventIndex]._embedded.venues[0].location.latitude);
-        var long = Number(eventSearch[eventIndex]._embedded.venues[0].location.longitude);
-        $("#eventInfoTitle").html(eventSearch[eventIndex].name);
-        var eventDesc = (eventSearch[eventIndex].info) ? eventSearch[eventIndex].info : "None available.";
-        $("#eventInfo").html(
-            "<p>Date: " + moment(eventSearch[eventIndex].dates.start.localDate).format('MMMM Do YYYY') + "</p>" +
-            "<p>Time: " + moment(eventSearch[eventIndex].dates.start.localTime, "hhmm").format("hh:mm a") + "</p>" + 
-            "<p>Location: " + eventSearch[eventIndex]._embedded.venues[0].address.line1 +
-            "<p>Info: " + eventDesc + "</p>" +
-            "<p><a href='" + eventSearch[eventIndex].url + "'>Click here to buy a ticket.</a></p>");
-        $("#shareBtn").attr("data-href", eventSearch[eventIndex].url);
-        initMap(lat, long);
-        setTimeout(function() {
-            google.maps.event.trigger(map, "resize");
-            map.setCenter({ lat: lat, lng: long });
-        }, 500); //since map is inside modal, trigger resize to refresh the map and show something instead of grey box
+    var lat = Number(eventSearch[eventIndex]._embedded.venues[0].location.latitude);
+    var long = Number(eventSearch[eventIndex]._embedded.venues[0].location.longitude);
+    $("#eventInfoTitle").html(eventSearch[eventIndex].name);
+    var eventDesc = (eventSearch[eventIndex].info) ? eventSearch[eventIndex].info : "None available.";
+    $("#eventInfo").html(
+        "<p>Date: " + moment(eventSearch[eventIndex].dates.start.localDate).format('MMMM Do YYYY') + "</p>" +
+        "<p>Time: " + moment(eventSearch[eventIndex].dates.start.localTime, "hhmm").format("hh:mm a") + "</p>" +
+        "<p>Location: " + eventSearch[eventIndex]._embedded.venues[0].address.line1 +
+        "<p>Info: " + eventDesc + "</p>" +
+        "<p><a href='" + eventSearch[eventIndex].url + "'>Click here to buy a ticket.</a></p>");
+    $("#shareBtn").attr("data-href", eventSearch[eventIndex].url);
+    initMap(lat, long);
+    setTimeout(function() {
+        google.maps.event.trigger(map, "resize");
+        map.setCenter({ lat: lat, lng: long });
+    }, 500); //since map is inside modal, trigger resize to refresh the map and show something instead of grey box
 }
 
 window.onload = function() {
@@ -183,20 +184,19 @@ window.onload = function() {
     $(document).on("click", ".country", function() {
         if ($(this).attr("data-countryCode") === "US") {
             $("#stateListBtn").removeClass("disabled");
-        }
-        else {
+        } else {
             $("#stateListBtn").addClass("disabled")
             $("#stateListBtn").html("Select a State<span class=caret'></span>");
-            $("#stateListBtn").attr("data-stateCode", ""); 
+            $("#stateListBtn").attr("data-stateCode", "");
         }
         $("#countryListBtn").attr("data-countryCode", $(this).attr("data-countryCode"));
-        $("#countryListBtn").html( $(this).html() + "<span class=caret'></span>");
+        $("#countryListBtn").html($(this).html() + "<span class=caret'></span>");
 
     });
 
     $(document).on("click", ".state", function() {
         $("#stateListBtn").attr("data-stateCode", $(this).attr("data-stateCode"));
-        $("#stateListBtn").html( $(this).html() + "<span class=caret'></span>");
+        $("#stateListBtn").html($(this).html() + "<span class=caret'></span>");
     });
     $(document).on("click", ".eventElemLg", function() {
         loadModal($(this).attr("data-index"));
@@ -211,10 +211,10 @@ window.onload = function() {
         event.preventDefault();
         $("#lgList").empty();
         $("#smList").empty();
-        var countryCode = $("#countryListBtn").attr("data-countryCode") 
+        var countryCode = $("#countryListBtn").attr("data-countryCode")
         var stateCode = $("#stateListBtn").attr("data-stateCode")
         //if the user has not selected a country, OR if they have selected US but not a state, exit function
-        if ((countryCode === "") || ((countryCode === "US") && (stateCode === "")))  {
+        if ((countryCode === "") || ((countryCode === "US") && (stateCode === ""))) {
             $("#lgList").append("<p id='noEvents'>Select a country, or if you selected the US, also select a state. City name is optional.</p>");
             $("#smList").append("<p id='noEvents'>Select a country, or if you selected the US, also select a state. City name is optional.</p>");
             return;
