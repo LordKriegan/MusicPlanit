@@ -12,8 +12,7 @@
     <!-- bootstrap jquery -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    <script type="text/javascript" src="./assets/js/fb.js"></script>
-    <script type="text/javascript" src="./assets/js/ticketmaster.js"></script>
+    <script type="text/javascript" src="./assets/js/logic.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsqsGRoeCFaylDOCU1XPjy7liKohqa_Qg&libraries=places" async defer></script>
     <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon" />
 </head>
@@ -34,21 +33,21 @@
                     <span class="dropdown">
                         <button id="countryListBtn" class="btn btn-primary dropdown-toggle" type="button" data-countryCode="" data-toggle="dropdown">Select a country
                             <span class="caret"></span></button>
-                        <ul class="dropdown-menu" id="countryList">
-                        </ul>
+                    <ul class="dropdown-menu" id="countryList">
+                    </ul>
                     </span>
                     <span class="dropdown">
                         <button id="stateListBtn" class="disabled btn btn-primary dropdown-toggle" type="button" data-regionCode="" data-toggle="dropdown">Select a state
                             <span class="caret"></span></button>
-                        <ul class="dropdown-menu" id="stateList">
-                        </ul>
+                    <ul class="dropdown-menu" id="stateList">
+                    </ul>
                     </span>
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Select a city" id="searchString">
                     </div>
                     <button type="submit" class="btn btn-default" id="searchBtn">Submit</button>
                 </form>
-                <ul style="margin: 12px 0 12px 0;" class="nav navbar-nav navbar-right">
+                <ul class="nav navbar-nav navbar-right">
                     <li>
                         <fb:login-button id="fbBtn" scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
                     </li>
@@ -79,11 +78,9 @@
                         </div>
                         <div class="col-xs-12 col-md-5">
                             <div id="eventInfo" style="font-size: 125%; padding-top: 50px;">
-
                             </div>
-                            <div class="fb-share-button" data-href="" data-layout="button" data-size="large" data-mobile-iframe="true">
-                                <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a>
-                            </div>
+                            <div id="shareBtn" data-href="" class ="btn btn-primary">Share</div>
+                            <!-- <div class="fb-share-button" data-href="" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a></div> -->
                         </div>
                     </div>
                 </div>
@@ -95,26 +92,11 @@
             <div class="col-xs-12 hidden-xs hidden-sm">
                 <div class="panel panel-primary bgFix">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Where do you want to go</h3>
+                        <h3 class="panel-title">Nearby Events</h3>
                     </div>
                     <div class="panel-body" id="lgList">
                         <!--populate images here-->
-                        <!-- <div class="eventElemLg" data-toggle="modal" data-target=".musicPlanitModal"> -->
-                        <!-- <p class="text-center">Event Name</p>
-                            <img src="http://via.placeholder.com/200x200">
-                        </div>
-                        <div class="eventElemLg">
-                            <p class="text-center">Event Name</p>
-                            <img src="http://via.placeholder.com/200x200">
-                        </div>
-                        <div class="eventElemLg">
-                            <p class="text-center">Event Name</p>
-                            <img src="http://via.placeholder.com/200x200">
-                        </div>
-                        <div class="eventElemLg">
-                            <p class="text-center">Event Name</p>
-                            <img src="http://via.placeholder.com/200x200">
-                        </div> -->
+                        <p id="noEvents">Search for something!</p>
                     </div>
                 </div>
             </div>
@@ -123,22 +105,11 @@
             <div class="col-xs-12 hidden-md hidden-lg">
                 <div class="panel panel-primary bgFix">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Where do you want to go</h3>
+                        <h3 class="panel-title">Nearby Events</h3>
                     </div>
                     <div class="panel-body" id="smList">
                         <!--populate small list here-->
-                        <!-- <div class="eventElemSm">
-                            <p class="text-center">Event Name</p>
-                        </div>
-                        <div class="eventElemSm">
-                            <p class="text-center">Event Name</p>
-                        </div>
-                        <div class="eventElemSm">
-                            <p class="text-center">Event Name</p>
-                        </div>
-                        <div class="eventElemSm">
-                            <p class="text-center">Event Name</p>
-                        </div> -->
+                        <p id="noEvents">Search for something!</p>
                     </div>
                 </div>
             </div>
