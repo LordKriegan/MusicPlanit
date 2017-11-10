@@ -1,11 +1,67 @@
 var eventSearch = [];
 
+var map;
+var infowindow;
+// var latitude = 34.0430;
+// var longitude = -118.2673;
+
+function initMap(lat, long) {
+    // console.log(latitude, longitude);
+
+
+    var myConcertIcon = "./assets/images/place-marker-concert.png"
+    var eventLocation = { lat: lat, lng: long };
+    console.log(eventLocation);
+    map = new google.maps.Map($('#map')[0], {
+        center: eventLocation,
+        zoom: 8
+    });
+
+    var marker = new google.maps.Marker({
+        position: eventLocation,
+        icon: myConcertIcon,
+        map: map
+    });
+
+    infowindow = new google.maps.InfoWindow();
+
+}
+
+function callback(results, status) {
+    if (status === google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+            createMarker(results[i]);
+        }
+    }
+}
+
+function createMarker(place) {
+    var myRestaurantIcon = "./assets/images/place-marker-food.png"
+    var placeLoc = place.geometry.location;
+    var marker = new google.maps.Marker({
+        icon: myRestaurantIcon,
+        map: map,
+        position: place.geometry.location
+    });
+
+    google.maps.event.addListener(marker, 'click', function() {
+        infowindow.setContent(place.name);
+        infowindow.open(map, this);
+    });
+}
+
 window.onload = function() {
 
-        $(document).on("click", ".eventElemLg", function() {
-            console.log(eventSearch[$(this).attr("data-index")]._embedded.venues[0].location)
-            initMap(parseInt(eventSearch[$(this).attr("data-index")]._embedded.venues[0].location.latitude), parseInt(eventSearch[$(this).attr("data-index")]._embedded.venues[0].location.longitude));
-        });
+    $(document).on("click", ".eventElemLg", function() {
+        console.log(eventSearch[$(this).attr("data-index")]._embedded.venues[0].location)
+        var lat = parseInt(eventSearch[$(this).attr("data-index")]._embedded.venues[0].location.latitude);
+        var long = parseInt(eventSearch[$(this).attr("data-index")]._embedded.venues[0].location.longitude);
+        initMap(lat, long);
+        setTimeout(function() {
+            google.maps.event.trigger(map, "resize");
+            map.setCenter({ lat: lat, lng: long });
+        }, 500); //since map is inside modal, resize to refresh the map
+    });
 
     $("#searchBtn").on("click", function(event) {
         event.preventDefault();
@@ -37,22 +93,21 @@ window.onload = function() {
                     divContainer.attr("data-index", i);
                     divContainer.append(eventImage);
                     divContainer.append("<p>" + eventName + "</p>");
-                    $("#lgList").prepend(divContainer);                      
-                    
+                    $("#lgList").prepend(divContainer);
+
 
                     var divContainerSm = $("<div>");
                     divContainerSm.attr("class", "eventElemSm");
                     divContainerSm.attr("data-toggle", "modal");
                     divContainerSm.attr("data-target", ".musicPlanitModal");
                     divContainerSm.attr("data-index", i);
-					divContainerSm.html("<p>" + eventName + "</p>");                    
+                    divContainerSm.html("<p>" + eventName + "</p>");
                     $("#smList").prepend(divContainerSm);
 
-                    
+
                 }
                 console.log(response._embedded.events[0]._embedded.venues[0].city.name);
                 console.log(queryURL);
             })
     });
 }
-

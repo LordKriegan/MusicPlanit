@@ -65,5 +65,11 @@ color: white;
 	display: none;
 }
 
-
+#map {
+    margin: 0 auto;
+    height: 500px;
+    width: 500px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
