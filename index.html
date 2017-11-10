@@ -13,7 +13,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./assets/js/fb.js"></script>
     <script type="text/javascript" src="./assets/js/ticketmaster.js"></script>
+<<<<<<< HEAD
    
+=======
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDsqsGRoeCFaylDOCU1XPjy7liKohqa_Qg&libraries=places" async defer></script>
+ 
+>>>>>>> dc06bb7ca03d5d3169df53311ae50b4b06a7af76
 </head>
 
 <body>
@@ -54,7 +59,24 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content text-center">
                 <div id="eventContent">
-                    <img src="http://via.placeholder.com/200x200">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <button class="btn btn-default" id="foodPlaces">Neary Restauraunts</button>
+                        </div>
+                        <div class="col-xs-6">
+                            <button class="btn btn-default" id="lodgingPlaces">Nearby Lodging</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <p id="eventInfo">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis fugiat similique in id beatae odit ducimus sed assumenda facere. Nobis libero dolor eos nisi consectetur facilis fugiat rem commodi, maxime.</p>
+                        </div>
+                    </div>
                 </div>
                 <div class="fb-share-button" data-href="" data-layout="button" data-size="large" data-mobile-iframe="true">
                     <a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse">Share</a>
@@ -116,6 +138,8 @@
             </div>
         </div>
     </div>
+
+
 </body>
 
 </html>
