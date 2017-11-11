@@ -1,0 +1,102 @@
+html { 
+  background: url(../images/background.jpg) no-repeat center center fixed; 
+  background-size: cover;
+}
+body {
+	background: rgba(0, 0, 0 , 0);
+}
+
+#lgList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+.bgFix{
+background: none;
+
+}
+
+.eventElemLg {
+    display: inline-block;
+    border-style: groove;
+    border-width: 2px;
+    margin: 10px;
+    padding: 5px;
+    text-align: center;
+    width: 250px;
+    height: 250px; 
+    background-color: #446e9b;
+    color: white;
+}
+
+.eventElemLg > img {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+
+}
+
+.eventElemLg > p {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.eventElemLg:hover {
+    box-shadow: -10px 10px 3pt 2pt rgb(87, 162, 248);
+}
+
+.eventElemSm {
+    text-align: center;
+    border-style: groove;
+    border-width: 2px;
+    margin: 10px;
+    padding: 5px;
+    background-color: #446e9b;
+    color: white;
+}
+
+#noEvents {
+    text-align: center;
+    border-style: groove;
+    border-width: 2px;
+    margin: 10px;
+    padding: 5px;
+    background-color: #446e9b;
+    color: white; 
+}
+
+.eventElemSm:hover {
+background: white;
+color: #446e9b;
+}
+
+#fbLogout {
+	display: none;
+}
+
+#fbProfilePic {
+	border-radius: 50%;
+    width: 50px;
+	height: 50px;
+	display: none;
+}
+
+.modal-content {
+    background-color: #446e9b;
+}
+
+.modal-content > h2, a, p {
+    color: white;
+}
+
+#map {
+    margin: 0 auto;
+    height: 500px;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
