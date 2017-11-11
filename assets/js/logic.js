@@ -117,7 +117,7 @@ function createMarker(place, icon) {
 
 //generate list of countries
 $.ajax({
-    url: 'http://api.geonames.org/countryInfoJSON?username=LordKriegan',
+    url: 'https://api.geonames.org/countryInfoJSON?username=LordKriegan',
     method: "GET"
 }).done(function(response) {
     for (var i = 0; i < response.geonames.length; i++) {
