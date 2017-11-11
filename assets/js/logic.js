@@ -129,7 +129,7 @@ $.ajax({
 
 //generate list of us states
 $.ajax({
-    url: 'http://api.geonames.org/childrenJSON?geonameId=6252001&username=LordKriegan',
+    url: 'https://api.geonames.org/childrenJSON?geonameId=6252001&username=LordKriegan',
     method: "GET"
 }).done(function(response) {
     for (var i = 0; i < response.geonames.length; i++) {
