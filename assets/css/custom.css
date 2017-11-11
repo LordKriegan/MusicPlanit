@@ -85,11 +85,10 @@ color: #446e9b;
 }
 
 .modal-content {
-    color: white;
     background-color: #446e9b;
 }
 
-.modal-content > h2, a {
+.modal-content > h2, a, p {
     color: white;
 }
 

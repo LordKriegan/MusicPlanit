@@ -31,11 +31,13 @@ function statusChangeCallback(response) {
         $("#fbBtn").css("display", "none");
         $("#fbLogout").css("display", "block");
         $("#fbProfilePic").css("display", "inline");
+        $("#shareBtn").css("display", "inline-block");
         setUserPic();
     } else {
         $("#fbBtn").css("display", "block");
         $("#fbLogout").css("display", "none");
         $("#fbProfilePic").css("display", "none");
+        $("#shareBtn").css("display", "none");
     }
 }
 
@@ -240,8 +242,8 @@ window.onload = function() {
                 eventSearch = response._embedded.events;
                 for (i = 0; i < response._embedded.events.length; i++) {
                     var eventName = response._embedded.events[i].name;
-                    if (eventName.length > 30) {
-                        eventName = eventName.slice(0, 30) + "...";
+                    if (eventName.length > 25) {
+                        eventName = eventName.slice(0, 25) + "...";
                     }
                     var eventImage = $("<img>");
                     eventImage.attr("src", response._embedded.events[i].images[1].url);
